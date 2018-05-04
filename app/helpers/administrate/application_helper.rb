@@ -33,11 +33,11 @@ module Administrate
     end
 
     def sanitized_order_params
-      params.permit(:search, :id, :order, :page, :per_page, :direction, :orders)
+      params.permit!
     end
 
     def clear_search_params
-      params.except(:search, :page).permit(:order, :direction, :per_page)
+      params.except(:search, :page).permit!
     end
   end
 end
