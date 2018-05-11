@@ -12,6 +12,9 @@ require "administrate/field/text"
 require "administrate/field/time"
 require "administrate/field/password"
 
+require "administrate/filter/select"
+require "administrate/filter/text"
+
 module Administrate
   class BaseDashboard
     include Administrate
@@ -52,6 +55,14 @@ module Administrate
 
     def collection_attributes
       self.class::COLLECTION_ATTRIBUTES
+    end
+
+    def collection_filters
+      if defined? self.class::COLLECTION_FILTERS
+        self.class::COLLECTION_FILTERS
+      else
+        []
+      end
     end
 
     def display_resource(resource)

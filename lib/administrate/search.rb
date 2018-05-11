@@ -9,7 +9,7 @@ module Administrate
       @term = term
     end
 
-    def run
+    def apply
       if @term.blank?
         @scoped_resource.all
       else

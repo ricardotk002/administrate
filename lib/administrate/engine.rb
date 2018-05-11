@@ -12,6 +12,8 @@ require "administrate/page/collection"
 require "administrate/order"
 require "administrate/resource_resolver"
 require "administrate/search"
+require "administrate/pagination"
+require "administrate/filters"
 require "administrate/namespace"
 require "administrate/namespace/resource"
 

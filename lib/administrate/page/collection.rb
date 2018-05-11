@@ -17,6 +17,10 @@ module Administrate
         dashboard.attribute_types_for(attribute_names)
       end
 
+      def filters
+        dashboard.collection_filters
+      end
+
       def ordered_html_class(attr)
         ordered_by?(attr) && order.direction
       end

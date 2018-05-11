@@ -7,6 +7,11 @@ module Administrate
       render locals: locals, partial: field.to_partial_path
     end
 
+    def render_filter(filter, locals = {})
+      locals.merge!(filter: filter)
+      render locals: locals, partial: filter.to_partial_path
+    end
+
     def class_from_resource(resource_name)
       resource_name.to_s.classify.constantize
     end

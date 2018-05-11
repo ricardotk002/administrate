@@ -1,0 +1,9 @@
+<% if page.filters.any? %>
+  <%= form_for :filter, method: :get do |f| %>
+    <% page.filters.each do |filter| %>
+      <%= render_filter filter, form: f %>
+    <% end %>
+
+    <%= f.submit "Filter" %>
+  <% end %>
+<% end %>

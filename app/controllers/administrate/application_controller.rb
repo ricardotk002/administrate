@@ -4,12 +4,12 @@ module Administrate
 
     def index
       search_term = params[:search].to_s.strip
-      resources = Administrate::Search.new(scoped_resource,
-                                           dashboard_class,
-                                           search_term).run
+      resources = Administrate::Filters.new(scoped_resource, dashboard_class, params[:filter]).apply
+      resources = Administrate::Search.new(resources, dashboard_class, search_term).apply
       resources = apply_resource_includes(resources)
       resources = order.apply(resources)
-      resources = resources.page(params[:page]).per(records_per_page)
+      resources = Administrate::Pagination.new(resources, params[:page], records_per_page).apply
+
       page = Administrate::Page::Collection.new(dashboard, order: order)
 
       render locals: {
